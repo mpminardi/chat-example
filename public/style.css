@@ -1,8 +1,132 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font: 13px Helvetica, Arial; }
-form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-#messages { list-style-type: none; margin: 0; padding: 0; }
-#messages li { padding: 5px 10px; }
-#messages li:nth-child(odd) { background: #eee; }
+/* Firefox specific hacks since they have flexbox bugs */
+@-moz-document url-prefix() {
+    * {
+        min-height: 0;
+        min-width: 0;
+    }
+}
+
+/* General site / toplevel container properties */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.site-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body, html {
+    font: 13px Helvetica, Arial;
+    height: 100%;
+    background-color: dimgray;
+}
+
+/* Username and userlist title properties */
+
+.titles {
+    height: 40px;
+    padding-top: 3px;
+    width: 100%;
+    font-size: large;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: row;
+}
+
+.username-area {
+    margin-left: 5px;
+    height: 100%;
+    width: 80%;
+}
+
+.user-list-title {
+    margin-left: 5px;
+    height: 100%;
+    width: 20%;
+}
+
+/* Message and user list properties */
+
+.lists {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.user-list {
+    width: 20%;
+    overflow-y: scroll;
+    border-style: solid transparent;
+    margin-bottom: 50px;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.message-list {
+    width: 80%;
+    overflow-y: scroll;
+    border-style: solid transparent;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#messages li {
+    padding: 5px 10px;
+    font-size: large;
+}
+
+#users {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#users li {
+    font-size: x-large;
+    color: white;
+    padding: 5px, 10px;
+}
+
+/* Text submission area properties. */
+
+.input-box {
+    position: fixed;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+form {
+    background: #000;
+    padding: 3px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+form input {
+    border: 0;
+    padding: 10px;
+    width: 90%;
+    margin-right: .5%;
+}
+
+form button {
+    width: 9%;
+    background: rgb(130, 224, 255);
+    border: none;
+    padding: 10px;
+}
